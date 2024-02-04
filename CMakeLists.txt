@@ -128,8 +128,8 @@ target_sources(avr_firmware
         src/board_b02.h
         src/board_b02.c
 
-        src/device/bmp280_sensor.h
-        src/device/bmp280_sensor.c
+        src/devices/bmp280_sensor.h
+        src/devices/bmp280_sensor.c
 
         src/lwjson_opts.h
 

@@ -17,7 +17,7 @@
 #include "mcu/int_1.h"
 #include "mcu/pcint_d.h"
 
-#include "device/bmp280_sensor.h"
+#include "devices/bmp280_sensor.h"
 
 #include "std_error/std_error.h"
 #include "logger.h"
