@@ -433,7 +433,7 @@ void board_process_led ()
 {
     if (basic_state.current_mode != basic_state.new_mode)
     {
-        if (basic_state.new_mode == INTRUSION)
+        if (basic_state.new_mode == GUARD)
         {
             board_deinit_timer1();
             board_init_timer1(GPIO_B);

@@ -237,7 +237,7 @@ void board_b02_process_light_strip (board_basic_state_t const * const basic_stat
     }
 
     // Intrusion mode
-    else if (basic_state->current_mode == INTRUSION)
+    else if (basic_state->current_mode == GUARD)
     {
         if ((current_light_color != WHITE_AND_RED_LIGHT) && (current_light_color != WHITE_LIGHT))
         {

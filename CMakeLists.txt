@@ -7,6 +7,8 @@
 
 cmake_minimum_required(VERSION 3.22)
 
+set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/cmake/avr.cmake")
+
 project(avr_node LANGUAGES C ASM VERSION 1.0.0.0)
 
 if(NOT CMAKE_BUILD_TYPE)
@@ -78,10 +80,6 @@ find_program(AVR_STRIP avr-strip REQUIRED)
 find_program(AVR_OBJDUMP avr-objdump REQUIRED)
 find_program(AVR_UPLOADTOOL avrdude REQUIRED)
 
-set(CMAKE_SYSTEM_NAME Generic)
-set(CMAKE_SYSTEM_PROCESSOR avr)
-set(CMAKE_C_COMPILER ${AVR_CC})
-
 add_subdirectory(external/common_code)
 
 # Create one target
@@ -121,7 +119,6 @@ target_sources(avr_firmware
         src/logger.c
         src/tcp_client.h
         src/tcp_client.c
-        src/node.msg.h
         src/node.mapper.h
         src/node.mapper.c
 
@@ -193,8 +190,8 @@ add_custom_command(TARGET avr_firmware
 
 add_custom_command(TARGET avr_firmware
     POST_BUILD
-        COMMAND ${AVR_SIZE} --format=SysV --mcu=${AVR_MCU} avr_firmware
-        COMMAND ${AVR_SIZE} --format=SysV --mcu=${AVR_MCU} avr_firmware.hex
+        COMMAND ${AVR_SIZE} --format=SysV avr_firmware
+        COMMAND ${AVR_SIZE} --format=SysV avr_firmware.hex
 )
 
 add_custom_target(flash

@@ -11,7 +11,7 @@
 
 #include "lwjson/lwjson.h"
 
-#include "node.msg.h"
+#include "node/node.types.h"
 
 #include "std_error/std_error.h"
 
@@ -28,11 +28,12 @@ void node_mapper_serialize_message (node_msg_t const * const msg, char *raw_data
     assert(msg->header.dest_array_size  != 0U);
 
     char dest_array[16] = { '\0' };
+
     sprintf(dest_array, "%d", msg->header.dest_array[0]);
 
     for (size_t i = 1U; i < msg->header.dest_array_size; ++i)
     {
-        sprintf(dest_array, "%s,%d", dest_array, msg->header.dest_array[i]);
+        sprintf(dest_array + strlen(dest_array), ",%d", msg->header.dest_array[i]);
     }
 
     int data_size = (-1);

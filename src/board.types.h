@@ -8,7 +8,7 @@
 
 #include <stdbool.h>
 
-#include "node.msg.h"
+#include "node/node.types.h"
 
 typedef struct board_basic_state
 {
